@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Search Campaigns</h1>
+  <search-box search-type="{{viewModel.searchType}}" prompt="Candidate, Measure, or PAC Name" search-term="{{viewModel.searchTerm}}" ></search-box>
+  <div ng-repeat="(index, campaign) in viewModel.campaigns">
+    <campaign-tile campaign="campaign"></campaign-tile><hr>
+  </div>
+</div>
+
+
+<!-- <div class="container results">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="text-center search">Search Campaigns</h1>
+    </div>
+  </div>
+
+  <div class="row">  
+      <search-box search-type="{{viewModel.searchType}}" prompt="Candidate, Measure, or PAC Name" search-term="{{viewModel.searchTerm}}" ></search-box>
+  </div>
+
+  <div class="row">
+    <span ng-repeat="(index, campaign) in viewModel.campaigns">
+      <div class="col-xs-12 col-sm-6 col-md-4" >
+        <campaign-tile campaign="campaign"></campaign-tile>
+      </div>
+      <br ng-show="(index+1)%3==0" />
+    </span>
+  </div>
+
+</div> -->

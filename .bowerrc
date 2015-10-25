@@ -1,0 +1,4 @@
+{
+    "directory": "app/bower_components",
+    "https-proxy":"https://connsvr.nike.com:8080"
+}

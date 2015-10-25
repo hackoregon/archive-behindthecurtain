@@ -1,0 +1,171 @@
+<div class="container main-container">
+  <div class="row highlights">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3 class="ore-expenditures"></h3>
+          <p>Expenditures</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3 class="ore-contributions"></h3>
+          <p>Contributions</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3 class="ore-contributions-in"></h3>
+          <p>In State Contributions</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3 class="ore-contributions-out"></h3>
+          <p>Out of State Contributions</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+  var oreTransData = 'http://54.213.83.132/hackoregon/http/all_oregon_sum/_/';
+  var formatter = d3.format(',.0f')
+  $.getJSON(oreTransData, function(json_data){
+      $.each(json_data, function(index, result){
+           $('.ore-expenditures').text('$'+formatter(result.in));
+           $('.ore-contributions').text('$'+formatter(result.out)); 
+           $('.ore-contributions-in').text('$'+formatter(result.total_from_in_state)); 
+           $('.ore-contributions-out').text('$'+formatter(result.from_outside)); 
+      })
+  });
+</script>
+<div class="veil-section">
+  <div class="container hero">
+    <h1>Demystify Oregon Political Funding</h1>
+    <br>
+    <search-box search-type="{{viewModel.searchType}}" prompt="Candidate, Measure, or PAC Name" search-term="{{viewModel.searchTerm}}" ></search-box>
+    <div ng-repeat="(index, campaign) in viewModel.campaigns">
+      <campaign-tile campaign="campaign"></campaign-tile>
+    </div>
+    <!-- <p><a href="#search" style="color:#fff;">Advanced Options &rarr;</a></p> -->
+  </div>
+</div>
+
+<div class="container">
+  <div class="row section">
+    <div class="col-md-12">
+      <h2>Browse</h2>
+      <p>If you are not sure what to look for consider browsing the following categories</p>
+    </div>
+  </div>
+  <div class="row mods">
+    <div class="col-md-3">
+      <a href="#oregon">
+        <span class="h3">Oregon</span>
+        <span>State summary</span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#measures">
+        <span class="h3">Measures</span>
+        <span>Initiatives, Referendums, Referrals</span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#donors">
+        <span class="h3">Donors</span>
+        <span>Corporations, PACs, Individuals</span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#candidates">
+        <span class="h3">Candidates</span>
+        <span>All Parties</span>
+      </a>
+    </div>
+  </div> 
+</div>
+
+<div class="container">
+  <div class="row">
+    <h3 style="text-align:center">Oregon State</h3>
+    <div class="col-md-12">
+      <div money-by-state money="viewModel.moneyByState"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row section">
+    <div class="col-md-12">
+      <h3>Need help getting started?</h3>
+    <p>Campaign finance is complicated. Here are some additional resources that could help you get up to speed</p><br>
+    </div>
+  </div>
+  <div class="row mods">
+    <div class="col-md-6">
+      <a href="#faq">
+        <span class="h3">FAQ</span>
+        <span>Browse common questions with answers</span>
+      </a>
+    </div>
+    <div class="col-md-6">
+      <a href="#contact">
+        <span class="h3">Contact Us</span>
+        <span>If you need assistance, drop us a line. We'd love to hear from you.</span>
+      </a>
+    </div>
+  </div> 
+</div>
+
+
+<!-- <div class="container home">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <img class="header img-responsive" src="images/new_logo_3.png" alt="Behind the Curtain" />
+    </div>
+  </div>
+
+
+  <h3>Lifting the Veil Off Local Campaign Finance</h3>
+  <div class="container">
+    <div class="row">
+      <div class="center-block">
+
+        
+        <div class="col-md-4 browse">
+          <a href="#browse">
+          <div class="spacer">
+            <ng-include src="'images/icons/landing_browse.svg'" />
+          </div>
+          </a>
+        </div> 
+        <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3 search-home">
+          <a href="#/results/candidate/#">
+          <div class="spacer">
+            <ng-include src="'images/icons/landing_search.svg'" class="img-responsive"/>
+          </div>
+          </a>
+        </div>
+
+        <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-3 view-all">
+          <a href="#oregon">
+          <div class="spacer">
+            <ng-include src="'images/icons/landing_oregon.svg'" class="img-responsive"/>
+          </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->

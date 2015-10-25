@@ -1,0 +1,28 @@
+{
+"nodes":[
+{"node":0,"name":"Grassroots"},
+{"node":1,"name":"Large Donor"},
+{"node":2,"name":"Business"},
+{"node":3,"name":"PAC"},
+{"node":4,"name":"Candidate"},
+{"node":5,"name":"Media"},
+{"node":6,"name":"Other campaign costs"},
+{"node":7,"name":"Contributions to other pacs"},
+{"node":8,"name": "PAC 1"},
+{"node":9,"name": "PAC 2"},
+{"node":10,"name":"PAC 3"},
+{"node":11,"name":"PAC 4"}
+],
+"links":[
+{"source":0,"target":4,"value":2},
+{"source":1,"target":4,"value":1},
+{"source":2,"target":4,"value":5},
+{"source":3,"target":4,"value":5},
+{"source":4,"target":5,"value":10},
+{"source":4,"target":6,"value":2},
+{"source":4,"target":7,"value":4},
+{"source":7,"target":8,"value":4},
+{"source":7,"target":9,"value":4},
+{"source":7,"target":10,"value":4},
+{"source":7,"target":11,"value":4}
+]}
