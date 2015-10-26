@@ -5,9 +5,16 @@ body {
 a {
 	color: #4E5E6A;
 }
-// .container {
-// 	max-width: 960px;
-// }
+.site-title {
+	font-size: 54px;
+	color: #A26B4D;
+	box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.1);
+	display: inline-block;
+	background: #fff;
+	padding: 15px;
+	text-align: left;
+
+}
 .panel-default {
 	background: #fff;
 	text-align: center;
@@ -40,6 +47,7 @@ a {
 	}
 }
 .highlights {
+	padding:0;
 	div {
 		text-align: center;
 	}

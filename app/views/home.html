@@ -1,5 +1,5 @@
 <div class="container main-container">
-  <div class="row highlights">
+  <div class="highlights">
     <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-body">
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-
+      <!--  TODO Tot Voters / (Tot spent - Tot cash) -->
   </div>
 </div>
 <script>
@@ -49,7 +49,7 @@
 </script>
 <div class="veil-section">
   <div class="container hero">
-    <h1>Demystify Oregon Political Funding</h1>
+    <h1 class="site-title">Demystify Oregon Political Funding</h1>
     <br>
     <search-box search-type="{{viewModel.searchType}}" prompt="Candidate, Measure, or PAC Name" search-term="{{viewModel.searchTerm}}" ></search-box>
     <div ng-repeat="(index, campaign) in viewModel.campaigns">
@@ -67,25 +67,19 @@
     </div>
   </div>
   <div class="row mods">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <a href="#oregon">
         <span class="h3">Oregon</span>
         <span>State summary</span>
       </a>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <a href="#measures">
         <span class="h3">Measures</span>
         <span>Initiatives, Referendums, Referrals</span>
       </a>
     </div>
-    <div class="col-md-3">
-      <a href="#donors">
-        <span class="h3">Donors</span>
-        <span>Corporations, PACs, Individuals</span>
-      </a>
-    </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <a href="#candidates">
         <span class="h3">Candidates</span>
         <span>All Parties</span>
