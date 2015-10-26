@@ -1,0 +1,8 @@
+<h1>&nbsp;</h1>
+<div class="container">
+  <h1>Search Campaigns</h1>
+  <search-box search-type="{{viewModel.searchType}}" prompt="Candidate, Measure, or PAC Name" search-term="{{viewModel.searchTerm}}" ></search-box>
+  <div ng-repeat="(index, campaign) in viewModel.campaigns">
+    <campaign-tile campaign="campaign"></campaign-tile><hr>
+  </div>
+</div>

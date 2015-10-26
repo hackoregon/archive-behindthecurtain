@@ -1,0 +1,67 @@
+<div class="container campaign-detail">
+  <div class="row mods section">
+    <h1>{{viewModel.campaign.candidate_name}}</h1>
+    <h4>{{viewModel.campaign.race}}</h4><br>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h2">{{viewModel.campaign.total | currencyFormat}}</span>
+          <span>Raised</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h2">{{viewModel.campaign.total | currencyFormat}}</span>
+          <span>Spent</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h2">{{viewModel.campaign.grassroots | percentage:1 }}</span>
+          <span>Grassroots</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h2">{{viewModel.campaign.instate | percentage:1 }}</span>
+          <span>Instate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row section">
+    <div class="col-md-12">
+      <h2>Who is giving?</h2>
+      <p>This visualization is calculated by total dollars, not total people.</p>
+      <div who-chart money="viewModel.financialSummary.contributions"
+                     donors="viewModel.financialSummary.donors"></div>
+    </div>
+  </div>
+  <div class="row section">
+    <div class="col-md-12">
+      <h2>What are they spending money on?</h2>
+      <p>Did you know campaigns self select these categories?</p>
+      <div spending-chart money="viewModel.financialSummary.expenditures"></div>
+    </div>
+  </div>
+  <div class="row section">
+    <div class="col-md-12 raising-spending-chart">
+      <h2>When are they raising and spending?</h2>
+      <p>This graph gives an idea of the timing of campaign finance activity. The slider below allows you to focus on a particular election cycle.</p>
+      <div id="raising-spending-chart"></div>
+      <div data-slider-chart funding-expenditures="viewModel.fundingExpenditures"></div>
+    </div>
+  </div>
+  <div class="row section">
+    <div class="col-md-12">
+      <h2>Where does the money come from?</h2>
+      <p>Money spent in Oregon is raised all across the country. This graphic demonstrates the magnitude of money spent in Oregon by state of origination.</p>
+      <div money-by-state money="viewModel.moneyByState"></div>
+  </div>
+</div>

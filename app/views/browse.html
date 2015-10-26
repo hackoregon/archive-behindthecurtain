@@ -1,0 +1,91 @@
+<div class="container browse">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3"><h1>Browse My Ballot</h1></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="btn local"
+           ng-class="{current: isLocal()}"
+           ng-click="selectArea(BALLOT.FULLADDRESS)">
+        <div class="areaLabel">
+          Local
+        </div>
+      </div>
+      <div class="btn zip"
+           ng-class="{current: isZip()}"
+           ng-click="selectArea(BALLOT.ZIP)">
+        <div class="areaLabel">
+           Zipcode
+        </div>
+      </div>
+      <div class="btn county"
+           ng-class="{current: isCounty()}"
+           ng-click="selectArea(BALLOT.COUNTY)">
+        <div class="areaLabel">
+           County
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form name="query" ng-submit="setMyBallot()" ng-class="{attempted: viewModel.hasAttempted}">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 current-address"
+           ng-show="isLocal()">
+        <form name="address" class="form-group">
+          <div class="col-md-12">
+            <input type="text" placeholder="Street Address"
+                   class="form-control"
+                   ng-model="viewModel.address.streetAddress"
+                   ng-required="isLocal()" />
+            <input type="text" placeholder="City"
+                   class="form-control"
+                   ng-model="viewModel.address.city"
+                   ng-required="isLocal()" />
+          </div>
+          <div class="col-md-3">
+              <input type="text" placeholder="OR" class="form-control"
+                     ng-disabled="true"></input>
+          </div>
+          <div class="col-md-9">
+              <input type="text" name="zip" placeholder="Zip Code"
+                     class="form-control"
+                     ng-model="viewModel.address.zip"
+                     ng-required="isLocal()" />
+          </div>
+          <input type="submit" class="force-submit" />
+        </form>
+      </div>
+    </div>
+
+    <div class="row"
+         ng-show="isZip()">
+      <div class="col-md-6 col-md-offset-3 current-address">
+        <form name="zip" ng-submit="setMyBallot()">
+          <div class="col-md-12">
+            <input type="text" name="code" placeholder="Zip Code"
+                   class="form-control"
+                   ng-model="viewModel.address.zip"
+                   ng-required="isZip()" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row"
+         ng-show="isCounty()">
+      <div class="col-md-6 col-md-offset-3 current-address">
+        <form name="county" ng-submit="setMyBallot()">
+          <div class="col-md-12">
+            <input type="text" name="county" placeholder="County"
+                   class="form-control"
+                   ng-model="viewModel.address.city"
+                   ng-required="isCounty()" />
+          </div>
+        </form>
+      </form>
+    </div>
+  </form>
+
+</div>

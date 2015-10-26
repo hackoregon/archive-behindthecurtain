@@ -1,0 +1,253 @@
+body {
+	background: #F1F4F9;
+	color: #4E5E6A;
+}
+a {
+	color: #4E5E6A;
+}
+.site-title {
+	font-size: 54px;
+	color: #A26B4D;
+	box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.1);
+	display: inline-block;
+	background: #fff;
+	padding: 15px;
+	text-align: left;
+
+}
+.panel-default {
+	background: #fff;
+	text-align: center;
+	box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.1);
+	border-radius: 0;
+	border: none;
+}
+.alert {
+	text-align: center;
+	box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.1);
+	border-radius: 0;
+	border: none;
+}
+
+// Beyond the Curtain Styles
+.navbar-default {
+	background: #64BCBB;
+	box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.1);
+	border:none;
+	.navbar-toggle {
+		margin-top: 18px;
+		background: lighten(#64BCBB, 10%);
+		&:hover {
+			background: darken(#64BCBB, 10%);
+		}
+		.icon-bar {
+			background-color: #fff;
+		}
+	}
+}
+.navbar-collapse {
+	background: #64BCBB;
+	border:none;
+}
+.navbar-brand {
+	margin-top: 5px;
+}
+.navbar-brand,
+.navbar-nav > li > a {
+  color: #fff !important;
+}
+.jumbotron {
+	text-align: center;
+	.container {
+		min-height:300px;
+		position: relative;
+	}
+}
+.highlights {
+	padding:0;
+	div {
+		text-align: center;
+	}
+}
+.section {
+	text-align: center;
+	margin: 25px auto;
+	p {
+		max-width: 700px;
+		margin-left:auto;
+		margin-right:auto;
+		margin-bottom:25px;
+	}
+}
+.browse-mods > div {
+	border: solid 1px #ccc;
+	text-align: center;
+	background: #fff;
+}
+
+.chart {
+	background: #ffc;
+	display: block;
+	position: relative;
+}
+
+.breadcrumb {
+	margin-left:0;
+}
+
+body {
+	margin-top: 50px;
+}
+.hero {
+	text-align: center;
+	padding-top:50px;
+}
+.veil-section {
+	height: 350px;
+	color: #fff;
+	background: #BAA472 url(../images/OregonSenateCarpetSM.jpg) repeat top fixed;
+	-moz-box-shadow: inset 0 0 20px #000000;
+   -webkit-box-shadow: inset 0 0 20px #000000;
+   box-shadow: inset 0 0 20px #000000;
+   border-top: solid 5px #BAA472;
+   border-bottom: solid 5px #BAA472;
+}
+.row {
+	margin: 25px auto 35px auto;
+}
+.mods {
+	margin:25px auto;
+	a {
+		display: block;
+		border: none;
+		background: #fff;
+		text-align: center;
+		padding: 25px 5px;
+		box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.1);
+		border-radius: 0;
+
+	}
+	.h2 {
+		display: block;
+		text-transform: uppercase;
+	}
+}
+
+// Viz
+
+// #chart {
+//   height: 500px;
+//   font: 13px sans-serif;
+// }
+// .node rect {
+//   fill-opacity: .9;
+//   shape-rendering: crispEdges;
+//   stroke-width: 0;
+// }
+// .node text {
+//   text-shadow: 0 1px 0 #fff;
+// }
+// .link {
+//   fill: none;
+//   stroke: #000;
+//   stroke-opacity: .2;
+// }
+
+// footer
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #fff;
+}
+
+// D3
+
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+  fill: none !important;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+
+.link:hover {
+  stroke-opacity: .5;
+}
+
+
+.counties {
+  fill: none;
+}
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+.q0-9 { fill:rgb(247,251,255); }
+.q1-9 { fill:rgb(222,235,247); }
+.q2-9 { fill:rgb(198,219,239); }
+.q3-9 { fill:rgb(158,202,225); }
+.q4-9 { fill:rgb(107,174,214); }
+.q5-9 { fill:rgb(66,146,198); }
+.q6-9 { fill:rgb(33,113,181); }
+.q7-9 { fill:rgb(8,81,156); }
+.q8-9 { fill:rgb(8,48,107); }
+
+.search-results {
+	margin-left: 0;
+	li {
+		margin-bottom: 18px;
+	}
+	a {
+		color: #666;
+	}
+}
+
+.faq .panel {
+	text-align: left;
+	border: solid 1px #ccc;
+	.panel-heading a {
+		display: block;
+	}
+}
+.arrow {
+	width: 50px;
+	height:50px;
+	position: absolute;
+	top:400px;
+	// &:hover {
+	// 	background: rgba(255,255,255,0.75);
+	// }
+}
+.arrow-left {
+	left: -18px;
+}
+.arrow-right {
+	right: -18px;
+}
+.img-thumbnail {
+	border-color: #eee;
+}

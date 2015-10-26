@@ -1,0 +1,485 @@
+@charset "utf-8";
+
+$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #2a7ae2;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+// Width of the content area
+$content-width:    800px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+// Using media queries with like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+@import
+        "bootstrap",
+        "bootstrap-sprockets",
+        "btc";
+
+.areaFundsRaised {
+  fill: rgba(72,161,78, 0.65);
+  stroke: none;
+  clip-path: url(#clip);
+}
+
+.areaFundsSpent {
+  fill: rgba(205,94,91, 0.65);
+  stroke: none;
+  clip-path: url(#clip);
+}
+text.tip-text {
+  color: #666;
+  font-size: 13px;
+}
+
+text.slider-title {
+  font-size: 16px;
+}
+  .legend rect {
+  fill:white;
+  stroke:#ccc;
+  opacity:0.8;
+}
+
+g.tick{
+font-size:11px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+
+
+.campaign-tile {
+  border: 1px solid #666666;
+  border-radius: 5px;
+  margin: 10px 10px 0 0;
+  padding: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.campaign-tile, .campaign-detail {
+  // h2 {
+  //   font-family: OpenSansBold;
+  //   font-size: 30px;
+  //   a {
+  //     color: #666666;
+  //   }
+  // }
+  .portrait {
+    float: left;
+    display: inline-block;
+    width: 170px;
+    height: 170px;
+  }
+  .total {
+    clear: both;
+    font-size: 2.5em;
+  }
+  .radial {
+    display: inline-block;
+  }
+  .percent {
+    font-size: 2em;
+  }
+  .icon {
+    width: 50px;
+    height: 50px;
+    margin-top: -50px;
+    position: relative;
+    top: 75px;
+    left: 25px;
+  }
+  .icon-grassroots {
+    background-image: url('../images/icons/grassroots_funding_heart.svg');
+  }
+  .icon-district {
+    background-image: url('../images/icons/indistrict_funding__gps.svg');
+  }
+  .icon-money {
+    background-image: url('../images/icons/total_money_raised.svg');
+  }
+  .icon-grassroot {
+    // background: #48A04B url('../images/icons/whos_giving_grassroots.svg') no-repeat center bottom;
+    background-color: #48A04B;
+  }
+  .icon-individual {
+    // background: #64BCBA url('../images/icons/whos_giving_indv.svg') no-repeat center bottom;
+    background-color: #64BCBA;
+  }
+  .icon-pac {
+    // background: #10716F url('../images/icons/whos_giving_pac.svg') no-repeat center bottom;
+    background-color: #10716F;
+  }
+  .icon-party {
+    // background: #C79C60 url('../images/icons/whos_giving_party.svg') no-repeat center bottom;
+    background-color: #C79C60 ;
+  }
+  .icon-corporate {
+    // background: #C2645E url('../images/icons/whos_giving.svg') no-repeat center bottom;
+    background-color: #C2645E;
+  }
+  .icon-union {
+    // background: #64BCBA url('../images/icons/whos_giving_union_funding.svg') no-repeat center bottom;
+    background-color: #64BCBA;
+  }
+  .party {
+    width: 75px;
+    height: 75px;
+    display: inline-block;
+  }
+  .party-democrat {
+    background-image: url('../images/icons/party2_dem_donkey.svg');
+  }
+  .party-republican {
+    background-image: url('../images/icons/party_rep_elphant.svg');
+  }
+  .funding-icon {
+    display: inline-block;
+  }
+  // .arrow {
+  //   width: 80px;
+  //   height: 80px;
+  //   position: absolute;
+  // }
+  // .arrow-left {
+  //   right: 100%;
+  // }
+  // .arrow-right {
+  //   left: 100%;
+  // }
+  .race {
+    height: 50px;
+  }
+}
+
+.funding-icons {
+  float: left;
+  width: 50px;
+}
+
+
+/*** Campaign Detail Page ============================================= ***/
+
+// .grassroots-fact {
+//   margin-top: 25px;
+// }
+
+// .total-raised {
+//   color: green;
+// }
+
+// .total-spent {
+//   color: red;
+// }
+
+.campaign-detail {
+
+//   .detail-header {
+//     border-bottom: 5px solid black;
+//   }
+//   .total-lable {
+
+//   }
+
+  // h3 {
+  //   font-family: OpenSansBold;
+  //   letter-spacing: 0.5px;
+  //   margin-top: 5px;
+  //   margin-bottom: 5px;
+  // }
+
+  // h4 {
+  //   font-size: 22px;
+  //   color: gray;
+  // }
+
+  .btn-toggle {
+    position: relative;
+    top: 2px;
+    padding: 0;
+    width: 51px;
+    height: 51px;
+    overflow: hidden;
+
+    &:hover {
+      img {
+        position: relative;
+        top: -49px;
+      }
+    }
+  }
+  .who-chart {
+    padding-top: 15px;
+
+    .source {
+      display: inline-block;
+      width:18%;
+      height: 50px;
+      p {
+        margin: 0;
+      }
+    }
+    .icon-container {
+      width:100%;
+      height:150px;
+      margin-bottom: 0;
+    }
+    .btn {
+      .badge {
+        top: 1px;
+      }
+    }
+    .donorList {
+      font-size: 1em;
+      line-height: 1.25em;
+      height: auto;
+      margin-top: 5px;
+      -webkit-transition: max-height 1s;
+      transition: max-height 1s;
+
+      .donor {
+        margin: 5px auto;
+        text-align: left;
+      }
+
+      a {
+          text-decoration: none;
+          &:active, &:hover {
+              text-decoration: underline;
+          }
+        }
+
+      .payee {
+        text-overflow: ellipsis;
+      }
+    }
+    .extended.donor {
+      display: none;
+    }
+    .extended.donor.fullList {
+      display: block;
+    }
+
+    .wider {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .d3spend {
+    text {
+      // font-family: OpenSansRegular;
+      font-size: 15px;
+      fill: black;
+    }
+    .slice {
+      text {
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.spent-row {
+  margin-bottom: 30px;
+}
+
+.candidate-name {
+  text-transform: capitalize;
+}
+
+  .legend {
+    display: inline-block;
+    width: 150px;
+
+    .category {
+      font-weight: 'bold';
+      margin: 2px 2px 0 0;
+    }
+  }
+
+.spending {
+  #d3tooltip {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid #828282;
+    border-radius: 10px;
+    pointer-events: none;
+
+    p {
+      margin: 0;
+      font-family: OpenSansRegular;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}
+
+// $iconSize: 85px;
+
+// .search, .results {
+
+//   .icon {
+//     display: inline-block;
+//     width: $iconSize;
+//     height: $iconSize;
+//     margin: 15px;
+//   }
+//   .icon-candidate {
+//     background-image: url('../images/icons/search_campgains.svg');
+//   }
+//   .icon-initiative {
+//     background-image: url('../images/icons/search_campgains2.svg');
+//   }
+//   .icon-party {
+//     background-image: url('../images/icons/search_campgains4.svg');
+//   }
+//   .icon-arrow {
+//     height: ($iconSize + 15px) / 2;
+//     width: ($iconSize + 15px) / 2;
+//     margin-top: ($iconSize / 3) + 5px;
+//     margin-left: -20px;
+//     background-image: url('../images/icons/search_arrow.svg');
+//   }
+// }
+
+// .results {
+//   .icon-candidate {
+//     margin-left: 16.666667%;
+//   }
+// }
+
+// .search-box {
+//   position: relative;
+
+//   .form-control {
+//     font-size: 1.5em;
+//     height: $iconSize * 7 / 10;
+//     margin-top: $iconSize / 3;
+//     border: 2px solid #777;
+//     border-radius: 7px;
+//   }
+//   input {
+//     padding-left: ($iconSize / 2) + 8px;
+//   }
+//   .bg-search-icon {
+//     width: ($iconSize / 2) - 5px;
+//     height: ($iconSize / 2) - 5px;
+//     position: absolute;
+//     left: 25px;
+//     top: 40px;
+//   }
+// }
+
+// .browse, .search, .results {
+//   h1 {
+//     font-family: "MerriweatherLight";
+//     font-size: 3.5em;
+//     letter-spacing: 2px;
+//   }
+// }
+
+// /* MONEY BY STATE =============================================== */
+.money-by-state {
+  margin-top: 20px;
+}
+
+// /* FOOTER ======================================================= */
+
+// .footer {
+//   margin-top: 75px;
+
+//   .social-container {
+//     margin-left: -10px;
+//   }
+// }
+
+// /* MEDIA QUERIES ================================================ */
+
+// @media (max-width: 1199px) {
+//   .footer {
+//     margin-top: 15px;
+//   }
+
+//   .campaign-tile h2 {
+//     font-size: 24px;
+//   }
+// }
+
+// @media (max-width: 991px) {
+//   .results {
+//     h1 {
+//       font-size: 2.5em;
+//     }
+//   }
+
+//   .search-box {
+//     .form-control {
+//       font-size: 1.25em;
+//     }
+//   }
+// }
+
+// @media (max-width: 767px) {
+//   .navbar-nav {
+//     font-size: 20px;
+//   }
+//   .footer {
+//     h4 {
+//       margin-right: 0px;
+//     }
+//     .social-media-thumbnails {
+//       text-align: center;
+//     }
+//   }
+// }
+
+// @media (max-width: 489px) {
+//   .search-box {
+//     .form-control {
+//       font-size: 13px;
+//     }
+//   }
+// }
+// @media (max-width: 485px) {
+//   .home {
+//     .header {
+//       margin-top: 0px;
+//     }
+//   }
+// }

@@ -1,0 +1,170 @@
+<!--
+ Behind the Curtain v2
+ Copyright 2014-2015 Hack Oregon
+-->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"  ng-app="frontendApp" ng-controller="TitleCtrl"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"  ng-app="frontendApp" ng-controller="TitleCtrl"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"  ng-app="frontendApp" ng-controller="TitleCtrl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class=no-js ng-app=frontendApp ng-controller=TitleCtrl> <!--<![endif]-->
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <title ng-bind=Page.title()></title>
+    <meta name=description content="">
+    <meta name=viewport content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="styles/8ab40e8a.main.css"/>
+        <!-- <base href="http://hackoregon.github.io/behindthecurtain/" />       -->
+
+        <script type=text/javascript src=https://www.google.com/jsapi></script>
+            <script>
+            google.load('visualization', '1', {packages: ['corechart', 'bar']});
+            google.setOnLoadCallback(drawBasic);
+
+                    function drawBasic() {
+
+                    var data = google.visualization.arrayToDataTable([
+                    ['Name','Cost per Vote', {role: 'style'}],
+                    ['*David Gomberg (D)', 498.70, '#0a46ec'],
+                    ['*Knute Buehler (R)', 220.10,'#ec150a' ],
+                    ['*Betty Komp (D)' , 198.33, '#0a46ec'],
+                    ['*Shemia  Fagan (D)', 174.15, '#0a46ec'],
+                    ['*Joe Gallegos (D)', 134.78, '#0a46ec'],
+                    ['*Brent Barton (D)', 125.04, '#0a46ec'],
+                    ['*Chris Gorsek (D)', 110.34, '#0a46ec'],
+                    ['*Val Hoyle (D)',  105.53, '#0a46ec'],
+                    ['Steve Newgard (R)',  89.15, '#ec150a'],
+                    ['*Susan McLain (D)', 72.31, '#0a46ec'],
+                    ['*Tina  Kotek (D)',  67.65, '#0a46ec'],
+                    ['Dan Mason (R)',  60.56, '#ec150a'],
+                    ['*Mike  McLane (R)', 53.28, '#ec150a'],
+                    ['Mark  Richman (R)',  52.03, '#ec150a'],
+                    ['Matt  Geiger (R)', 50.76, '#ec150a'],
+                    ['*Caddy McKeown (D)',  50.21,'#0a46ec'],
+                    ['*Paul  Evans (D)',  47.28, '#0a46ec'],
+                    ['Kathy Goss (R)', 44.55, '#ec150a'],
+                    ['*Mark  Johnson (R)',  43.92, '#ec150a'],
+                    ['*Julie Parrish (R)',  41.56, '#ec150a']           
+
+                      ]);
+
+
+                      var options = {
+                        title: 'How much did each vote cost a candidate?',
+                        chartArea: {width: '50%', height: '80%'},
+                        hAxis: {
+                          title: 'Cost per Vote',
+                          minValue: 0
+                        },
+                        vAxis: {
+                          title: 'Name (* denotes winner)'
+                        }
+                      };
+
+                      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+                      chart.draw(data, options);
+                      
+                    }
+
+                </script> 
+                <script>
+                google.load('visualization', '1', {packages: ['corechart', 'bar']});
+                google.setOnLoadCallback(drawBasic);
+
+                function drawBasic() {
+
+                      var data = google.visualization.arrayToDataTable([
+                                ['Name','', {role: 'style'}],
+                                ['*David Gomberg (D)', 267800, '#0a46ec'],
+                                ['*Knute Buehler (R)', 2700000,'#ec150a' ],
+                                ['*Betty Komp (D)', 734400, '#0a46ec'],
+                                ['*Shemia  Fagan (D)', 1800000, '#0a46ec'],
+                                ['*Joe Gallegos (D)', 1400000, '#0a46ec'],
+                                ['*Brent Barton (D)', 1600000, '#0a46ec'],
+                                ['*Chris Gorsek (D)', 742700, '#0a46ec'],
+                                ['*Val Hoyle (D)',  1300000, '#0a46ec'],
+                                ['Steve Newgard (R)',  972700, '#ec150a'],
+                                ['*Susan McLain (D)', 702400, '#0a46ec'],
+                                ['*Tina  Kotek (D)',  1300000, '#0a46ec'],
+                                ['Dan Mason (R)',  514500, '#ec150a'],
+                                ['*Mike  McLane (R)', 930600, '#ec150a'],
+                                ['Mark  Richman (R)',  431600, '#ec150a'],
+                                ['Matt  Geiger (R)', 163800, '#ec150a'],
+                                ['*Caddy McKeown (D)',  497700,'#0a46ec'],
+                                ['*Paul  Evans (D)',  546900, '#0a46ec'],
+                                ['Kathy Goss (R)', 476700, '#ec150a'],
+                                ['*Mark  Johnson (R)',  565500, '#ec150a'],
+                                ['*Julie Parrish (R)',  613200, '#ec150a']
+
+                      ]);
+
+                      var options = {
+                        title: 'How much money did each candidate raise?',
+                        chartArea: {width: '50%', height: '80%'},
+                        hAxis: {
+                          title: 'Cash Raised',
+                          minValue: 0
+                        },
+                        vAxis: {
+                          title: 'Name (* denotes winner)'
+                        }
+                      };
+
+                      var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
+
+                      chart.draw(data, options);
+                    }
+                </script>  
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+  <div class=content>
+    <div ng-controller=NavCtrl>
+        <ng-include src="'/views/partials/nav.html'" ng-if=!atHome()></ng-include>
+    </div>
+
+    <!-- Add your site or application content here -->
+    <div ng-view=""></div>
+    
+  </div>
+
+    <ng-include src="'/views/partials/footer.html'"></ng-include>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-69295828-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <script src=//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js></script>
+    <script src=bower_components/angular/angular.js></script>
+    <script src=bower_components/d3/d3.js></script>
+    <script src=bower_components/lodash/dist/lodash.js></script>
+    <script src=bower_components/numeral/numeral.js></script>
+    <!-- where page -->
+    <script src=bower_components/topojson/topojson.js></script>
+    <script src=bower_components/queue-async/queue.min.js></script>
+    <!-- end where page -->
+
+        <script src="scripts/67ddff06.plugins.js"></script>
+
+        <script src="scripts/4f8bf09b.modules.js"></script>
+
+        <script src="scripts/742f5706.scripts.js"></script>
+
