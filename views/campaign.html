@@ -2,55 +2,54 @@
   <div class="row mods">
     <h1>{{viewModel.campaign.candidate_name}}</h1>
     <h4>{{viewModel.campaign.race}}</h4><br>
-    <div class="col-md-3">
+    <div class=col-md-3>
       <div class="panel panel-default">
-        <div class="panel-body">
-          <span class="h3">{{viewModel.campaign.total | currencyFormat}}</span>
+        <div class=panel-body>
+          <span class=h3>{{viewModel.campaign.total | currencyFormat}}</span>
           <span>Raised</span>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class=col-md-3>
       <div class="panel panel-default">
-        <div class="panel-body">
-          <span class="h3">{{viewModel.campaign.total | currencyFormat}}</span>
+        <div class=panel-body>
+          <span class=h3>{{viewModel.campaign.total | currencyFormat}}</span>
           <span>Spent</span>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class=col-md-3>
       <div class="panel panel-default">
-        <div class="panel-body">
-          <span class="h3">{{viewModel.campaign.grassroots | percentage:1 }}</span>
+        <div class=panel-body>
+          <span class=h3>{{viewModel.campaign.grassroots | percentage:1 }}</span>
           <span>Grassroots</span>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class=col-md-3>
       <div class="panel panel-default">
-        <div class="panel-body">
-          <span class="h3">{{viewModel.campaign.instate | percentage:1 }}</span>
+        <div class=panel-body>
+          <span class=h3>{{viewModel.campaign.instate | percentage:1 }}</span>
           <span>Instate</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
+  <div class=row>
+    <div class=col-md-12>
       <h3>Who is giving?</h3>
       <p>This visualization is calculated by total dollars, not total people.</p>
-      <div who-chart money="viewModel.financialSummary.contributions"
-                     donors="viewModel.financialSummary.donors"></div>
+      <div who-chart="" money=viewModel.financialSummary.contributions donors=viewModel.financialSummary.donors></div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
+  <div class=row>
+    <div class=col-md-12>
       <h3>What are they spending money on?</h3>
       <p>This visualization is calculated by total dollars, not total people.</p>
-      <div spending-chart money="viewModel.financialSummary.expenditures"></div>
+      <div spending-chart="" money=viewModel.financialSummary.expenditures></div>
     </div>
   </div>
-  <div class="row">
+  <div class=row>
     <h3>How does the money flow?</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     
@@ -77,7 +76,7 @@
       stroke-opacity: .5;
     }
     </style>
-    <div id="chart"></div>
+    <div id=chart></div>
     <script>
 
     var units = "Widgets";
@@ -178,12 +177,12 @@
     });
     </script>
   </div>
-  <div class="row">
-    <div class="col-md-12">
+  <div class=row>
+    <div class=col-md-12>
       <h3>When are they raising and spending?</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <div id="raising-spending-chart"></div>
-      <script type="text/javascript">
+      <div id=raising-spending-chart></div>
+      <script type=text/javascript>
       function drawLineChart() {
         var svg = dimple.newSvg("#raising-spending-chart", 960, 400);
         d3.tsv("/data/fpo_spending_data.tsv", function (data) {
@@ -201,14 +200,14 @@
       }
       // drawLineChart();
       </script>
-      <div data-slider-chart funding-expenditures="viewModel.fundingExpenditures" ></div>
+      <div data-slider-chart="" funding-expenditures=viewModel.fundingExpenditures></div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
+  <div class=row>
+    <div class=col-md-12>
       <h3>Where does the money come from?</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <div money-by-state money="viewModel.moneyByState"></div>
+      <div money-by-state="" money=viewModel.moneyByState></div>
   </div>
 </div>
 <!--
@@ -365,4 +364,4 @@ $.getJSON(data, function(json_data){
 
   </div>
 </div>
- -->
+ --></div>

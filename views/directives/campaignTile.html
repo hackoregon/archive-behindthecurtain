@@ -1,6 +1,6 @@
-  {{JSON.stringify(campaign)}}
+{{JSON.stringify(campaign)}}
   <div ng-class="{'party-{{campaign.party | lowercase}}': true }">
-    <h4><a href="#campaign/{{campaign.filer_id}}">{{campaign.candidate_name | convertCase}}</a></h4>
+    <h4><a href=#campaign/{{campaign.filer_id}}>{{campaign.candidate_name | convertCase}}</a></h4>
     <p> {{campaign.race}}  {{campaign.party}} Raised: {{campaign.total | currencyFormat}} Spent: {{campaign.total_spent | currencyFormat}}</p>
   </div>
 
