@@ -1,0 +1,368 @@
+<div class="container campaign-detail">
+  <div class="row mods">
+    <h1>{{viewModel.campaign.candidate_name}}</h1>
+    <h4>{{viewModel.campaign.race}}</h4><br>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h3">{{viewModel.campaign.total | currencyFormat}}</span>
+          <span>Raised</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h3">{{viewModel.campaign.total | currencyFormat}}</span>
+          <span>Spent</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h3">{{viewModel.campaign.grassroots | percentage:1 }}</span>
+          <span>Grassroots</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <span class="h3">{{viewModel.campaign.instate | percentage:1 }}</span>
+          <span>Instate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Who is giving?</h3>
+      <p>This visualization is calculated by total dollars, not total people.</p>
+      <div who-chart money="viewModel.financialSummary.contributions"
+                     donors="viewModel.financialSummary.donors"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>What are they spending money on?</h3>
+      <p>This visualization is calculated by total dollars, not total people.</p>
+      <div spending-chart money="viewModel.financialSummary.expenditures"></div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>How does the money flow?</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    
+    <style>
+    .node rect {
+      cursor: move;
+      fill-opacity: .9;
+      shape-rendering: crispEdges;
+    }
+
+    .node text {
+      pointer-events: none;
+      text-shadow: 0 1px 0 #fff;
+      fill: #000;
+    }
+
+    .link {
+      fill: none;
+      stroke: #000;
+      stroke-opacity: .2;
+    }
+
+    .link:hover {
+      stroke-opacity: .5;
+    }
+    </style>
+    <div id="chart"></div>
+    <script>
+
+    var units = "Widgets";
+
+    var margin = {top: 10, right: 10, bottom: 10, left: 10},
+    width = 1000 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+    var formatNumber = d3.format(",.0f"),    // zero decimal places
+    format = function(d) { return formatNumber(d) + " " + units; },
+    color = d3.scale.category20();
+
+    // append the svg canvas to the page
+    var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", 
+      "translate(" + margin.left + "," + margin.top + ")");
+
+    // Set the sankey diagram properties
+    var sankey = d3.sankey()
+    .nodeWidth(36)
+    .nodePadding(40)
+    .size([width, height]);
+
+    var path = sankey.link();
+
+    // load the data
+    d3.json("/data/fpo-candidate-formatted.json", function(error, graph) {          
+
+      sankey
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .layout(32);
+
+    // add in the links
+    var link = svg.append("g").selectAll(".link")
+    .data(graph.links)
+    .enter().append("path")
+    .attr("class", "link")
+    .attr("d", path)
+    .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+    .sort(function(a, b) { return b.dy - a.dy; });
+
+    // add the link titles
+    link.append("title")
+    .text(function(d) {
+      return d.source.name + " → " + 
+      d.target.name + "\n" + format(d.value); });
+
+    // add in the nodes
+    var node = svg.append("g").selectAll(".node")
+    .data(graph.nodes)
+    .enter().append("g")
+    .attr("class", "node")
+    .attr("transform", function(d) { 
+      return "translate(" + d.x + "," + d.y + ")"; })
+    .call(d3.behavior.drag()
+      .origin(function(d) { return d; })
+      .on("dragstart", function() { 
+        this.parentNode.appendChild(this); })
+      .on("drag", dragmove));
+
+    // add the rectangles for the nodes
+    node.append("rect")
+    .attr("height", function(d) { return d.dy; })
+    .attr("width", sankey.nodeWidth())
+    .style("fill", function(d) { 
+      return d.color = color(d.name.replace(/ .*/, "")); })
+    .style("stroke", function(d) { 
+      return d3.rgb(d.color).darker(2); })
+    .append("title")
+    .text(function(d) { 
+      return d.name + "\n" + format(d.value); });
+
+    // add in the title for the nodes
+    node.append("text")
+    .attr("x", -6)
+    .attr("y", function(d) { return d.dy / 2; })
+    .attr("dy", ".35em")
+    .attr("text-anchor", "end")
+    .attr("transform", null)
+    .text(function(d) { return d.name; })
+    .filter(function(d) { return d.x < width / 2; })
+    .attr("x", 6 + sankey.nodeWidth())
+    .attr("text-anchor", "start");
+
+    // the function for moving the nodes
+    function dragmove(d) {
+      d3.select(this).attr("transform", 
+        "translate(" + d.x + "," + (
+          d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
+          ) + ")");
+      sankey.relayout();
+      link.attr("d", path);
+      }
+    });
+    </script>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>When are they raising and spending?</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div id="raising-spending-chart"></div>
+      <script type="text/javascript">
+      function drawLineChart() {
+        var svg = dimple.newSvg("#raising-spending-chart", 960, 400);
+        d3.tsv("/data/fpo_spending_data.tsv", function (data) {
+          data = dimple.filterData(data, "Owner", ["Aperture", "Black Mesa"])
+          var myChart = new dimple.chart(svg, data);
+          myChart.setBounds(60, 30, 805, 305);
+          var x = myChart.addCategoryAxis("x", "Month");
+          x.addOrderRule("Date");
+          myChart.addMeasureAxis("y", "Unit Sales");
+          var s = myChart.addSeries("Channel", dimple.plot.line);
+          s.interpolation = "cardinal";
+          myChart.addLegend(60, 10, 500, 20, "right");
+          myChart.draw();
+        });
+      }
+      // drawLineChart();
+      </script>
+      <div data-slider-chart funding-expenditures="viewModel.fundingExpenditures" ></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Where does the money come from?</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div money-by-state money="viewModel.moneyByState"></div>
+  </div>
+</div>
+<!--
+<h1>Competitors</h1>
+<table class="competitors table table-bordered table-striped"></table>
+<script type="text/javascript">  
+var data = "http://54.213.83.132/hackoregon/http/competitors_from_filer_id/3571/";
+$.getJSON(data, function(json_data){
+    var table_obj = $('table.competitors');
+    $.each(json_data, function(index, result){
+         var table_row = $('<tr>', {});
+         var table_cell1 = $('<td>', {html: result.candidate_name});
+         var table_cell2 = $('<td>', {html: result.total_spent});
+         table_row.append(table_cell1,table_cell2);
+         table_obj.append(table_row);
+    })
+});
+</script>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="container campaign-detail">
+  <div class="col-md-9 col-md-offset-1">
+
+  <div class="row detail-header">
+    <h1 class="candidate-name">{{viewModel.campaign.candidate_name}}</h1>
+  </div>
+  <h2 class="candidate-name">{{viewModel.campaign.race}}</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <img ng-src="{{ photo }}" class="campaign-photo" width="100%"/>
+      <p>Submit your campaign photo <a href="mailto:hello@hackoregon.com?Subject=Campaign%20photo" target="_top">here</a>.</p>
+    </div>
+    <div class="col-md-2">
+      <div class="party party-{{viewModel.campaign.party}}"></div>
+      {{ viewModel.campaign.party }}
+    </div>
+    <div class="col-md-6 campaign-details">
+      <div class="row">
+        <div class="col-sm-4 total total-raised">
+          <b>Raised</b>
+        </div>
+        <div class="col-sm-8">
+          <div class="total total-raised">{{viewModel.campaign.total | currencyFormat}}</div>
+        </div>
+      </div>
+      <div class="row spent-row">
+        <div class="col-sm-4 total total-spent">
+          <b>Spent</b>
+        </div>
+        <div class="col-sm-8">
+          <div class="total total-spent">{{viewModel.campaign.total_spent | currencyFormat}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div simple-radial percent="viewModel.campaign.grassroots" title="Grassroots Funding" icon="grassroots"></div>
+        </div>
+        <div class="col-sm-4">
+          <div simple-radial percent="viewModel.campaign.instate" title="In-District Funding" icon="district"></div>
+        </div>
+        <div class="col-sm-4">
+          <div simple-radial percent="viewModel.campaign.spent_percent" title="Spent" icon="money" color="#48a04b"></div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Official Campaign Contact</h3>
+      <h3><a href="http://{{viewModel.campaign.website}}">{{viewModel.campaign.website}}</a></h3>
+      <h3>{{viewModel.campaign.phone}}</h3>
+      
+    </div>
+  </div>
+
+
+<div class="row">
+  <div class="col-xs-5 col-xs-offset-6 grassroots-fact">
+    <h4>Did you know the statewide average for grassroots funding is 13%?</h4>
+  </div>
+</div>
+
+
+  <div class="row detail-header">
+    <h2>Who's Giving?</h2>
+    <h4>This visualization is calculated by total dollars, not total people.</h4>
+    <social-tags class="pull-right">Share</social-tags>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div who-chart money="viewModel.financialSummary.contributions"
+                     donors="viewModel.financialSummary.donors"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="detail-header">
+      <h2>What Are They Spending Money On?</h2>
+      <h4>Did you know campaigns self select these categories?</h4>
+    </div>
+    <social-tags class="pull-right">Share</social-tags>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div spending-chart money="viewModel.financialSummary.expenditures"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="detail-header">
+      <h2>When are they raising and spending money?</h2>
+      <h4>You can tell a lot about the life cycle of a campaign by looking at their transaction volume and patterns.</h4>
+    </div>
+    <social-tags class="pull-right">Share</social-tags>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div data-slider-chart funding-expenditures="viewModel.fundingExpenditures" ></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="detail-header">
+      <h2>Is the Money Local?</h2>
+      <h4>This election year, Oregon has received contributions from all 50 states.</h4>
+    </div>
+    <social-tags class="pull-right">Share</social-tags>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      
+      <div money-by-state money="viewModel.moneyByState"></div>
+    </div>
+  </div>
+
+  </div>
+</div>
+ -->

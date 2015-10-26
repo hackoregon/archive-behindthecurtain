@@ -1,0 +1,27 @@
+<div class="container">
+	<h1>Voter Acquisition Costs</h1>
+	<p>Some explanatory text here...</p>
+	<br>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div id="acquisition-chart">
+			  <script type="text/javascript">
+			  function drawAcquisitionChart() {
+			    var svg = dimple.newSvg("#acquisition-chart", 590, 2000);
+			    d3.csv("/data/acquisition_cost.csv", function (data) {
+			      var aChart = new dimple.chart(svg, data);
+			      aChart.setBounds(75, 30, 480, 1800)
+			      aChart.addMeasureAxis("x", "Acquisition Cost");
+			      var y = aChart.addCategoryAxis("y", "Last Name");
+			      y.addOrderRule("Acquisition Cost");
+			      aChart.addSeries(null, dimple.plot.bar);
+			      aChart.draw();
+			    });
+			  } drawAcquisitionChart();
+			  </script>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- TODO Winners, Losers, Colors -->
