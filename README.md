@@ -6,7 +6,7 @@ The core Hack Oregon application is meant to expose answers to 4 main questions 
 - **who?**  Who is being funded, and by which PACs, Corporations, and individuals.
 - **what?**  What are the outcomes of campaign finance dollars at work?  (good or bad)
 - **when?**  When do cycles of campaign and funding take place and how does this effect the political process and civic life?
-**where?** What does the breakdown of donors/funders look like in Oregon and how does 'place' effect the political process?
+- **where?** What does the breakdown of donors/funders look like in Oregon and how does 'place' effect the political process?
 
 Components for the core application lives at the top level of each directory.  Additionally, in each folder there is a `community` folder for contributions that do not relate to the core application, but should exist on their own.
 
