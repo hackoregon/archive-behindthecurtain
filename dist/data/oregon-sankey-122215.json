@@ -1,0 +1,22 @@
+{"nodes": [
+ {"node": 0, "name": "From Other PACs"}, 
+ {"node": 1, "name": "Grassroots"}, 
+ {"node": 2, "name": "Media"}, 
+ {"node": 3, "name": "Other In"}, 
+ {"node": 4, "name": "In Kind"}, 
+ {"node": 5, "name": "Oregon"}, 
+ {"node": 6, "name": "Business and Large Donor"}, 
+ {"node": 7, "name": "To other PACs"},
+ {"node": 8, "name": "Other Out"}
+ ], 
+"links": [
+  {"source": 6, "target": 5, "value": 260420618.40000284}, 
+  {"source": 0, "target": 5, "value": 127393695.36999951}, 
+  {"source": 3, "target": 5, "value": 28154897.99999988}, 
+  {"source": 4, "target": 5, "value": 25426261.860000033}, 
+  {"source": 1, "target": 5, "value": 60913571.83999945}, 
+  {"source": 5, "target": 2, "value": 233986493.73999885}, 
+  {"source": 5, "target": 7, "value": 98312370.91000046}, 
+  {"source": 5, "target": 8, "value": 194470697.0699916}
+  ]
+}

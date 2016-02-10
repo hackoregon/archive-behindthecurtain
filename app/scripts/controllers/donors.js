@@ -2,7 +2,7 @@
   'use strict';
   angular.module('frontendApp').controller('DonorsCtrl', function($scope, Title) {
 
-    Title.setTitle('Donors');
+    Title.setTitle('Donor Detail Page');
 
   });
 
